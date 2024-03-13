@@ -35,11 +35,15 @@ export const todoSlice = createSlice({
         text: action.payload
       }
       state.todos.push(todo);
-      
+      localStorage.setItem(todo.id, todo.text);
     },
+
     removeTodo: (state, action) => {
-      const id = action.payload
+    // "action.payload" is just an object
+    // we use dispatch object to send value in that "action.payload" 
+      const id = action.payload.id
       state.todos = state.todos.filter((item) => item.id !== id);
+      localStorage.removeItem(id)
     },
     // check once
     // updateTodo: (state, action) => {

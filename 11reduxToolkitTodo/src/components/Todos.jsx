@@ -5,8 +5,14 @@ import {removeTodo} from '../features/todo/todoSlice'
 function Todos() {
 
     // we're simply accessing the state named "todos" (see the initial state object)
+    // there can be many states like "auth", "blah-blah" all of them can be accessed by this "useSelector" method
     const todos = useSelector(state => state.todos)
     const dispatch = useDispatch()
+    // by using "dispatch" object we send the data in that "action.payload" Object
+    // so that later we can access e.g. "action.payload.id"
+    if (!todos) {
+        
+    }
 
   return (
     <>
@@ -19,7 +25,7 @@ function Todos() {
           >
             <div className='text-white'>{todo.text}</div>
             <button
-             onClick={() => dispatch(removeTodo(todo.id))}
+             onClick={() => dispatch(removeTodo(todo))}
               className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
             >
               <svg

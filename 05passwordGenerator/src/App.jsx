@@ -31,9 +31,12 @@ function App() {
   }, [length, canUseNumber, canUseCharacter]);
 
   const passwordRef = useRef(null);
+  const copyBtnRef = useRef(null);
   // you can also use useCallback to cache
   const copyPassword = () => {
-    passwordRef.current?.select(); // not working ..?
+    passwordRef.current?.select();
+    console.log("passwordRef: ",passwordRef.current?.type);
+    console.log("copyBtnRef: ", copyBtnRef.current?.className);
     navigator.clipboard.writeText(password);
     setCopyBtnText("Copied!");
     setTimeout(() => {
@@ -57,6 +60,7 @@ function App() {
           <button
             className="transition ease-in-out duration-200 outline-none bg-blue-500 hover:bg-blue-400 active:bg-blue-600 text-white px-3 py-0.5 shrink-0"
             onClick={copyPassword}
+            ref={copyBtnRef}
           >
             {copyBtnText}
           </button>

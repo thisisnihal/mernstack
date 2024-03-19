@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import { Client, Account, ID } from "appwrite";
 import conf from "../conf/conf";
 
